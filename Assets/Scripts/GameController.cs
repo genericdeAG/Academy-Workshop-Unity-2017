@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         SceneManager.LoadScene(Scenes[0].name, LoadSceneMode.Additive);
+        
     }
 
     // Update is called once per frame
