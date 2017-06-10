@@ -1,37 +1,38 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class BlockMovement : MonoBehaviour
+namespace Assets.Scripts
 {
-    private Transform _translation;
-
-    public float Speed;
-    // Use this for initialization
-    void Start()
+    public class BlockMovement : MonoBehaviour
     {
-        _translation = GetComponent<Transform>();
-    }
+        private Transform _translation;
 
-    // Update is called once per frame
-    void Update()
-    {
-        var wPressed = Input.GetKey(KeyCode.W);
-        var aPressed = Input.GetKey(KeyCode.A);
-        var sPressed = Input.GetKey(KeyCode.S);
-        var dPressed = Input.GetKey(KeyCode.D);
+        public float Speed;
+        // Use this for initialization
+        void Start()
+        {
+            _translation = GetComponent<Transform>();
+        }
 
-        var movementVector = new Vector3(0, 0, 0);
-        if (wPressed) movementVector = Vector3.forward;
-        if (sPressed) movementVector = Vector3.back;
-        if (aPressed) movementVector = Vector3.left;
-        if (dPressed) movementVector = Vector3.right;
+        // Update is called once per frame
+        void Update()
+        {
+            var wPressed = Input.GetKey(KeyCode.W);
+            var aPressed = Input.GetKey(KeyCode.A);
+            var sPressed = Input.GetKey(KeyCode.S);
+            var dPressed = Input.GetKey(KeyCode.D);
+
+            var movementVector = new Vector3(0, 0, 0);
+            if (wPressed) movementVector = Vector3.forward;
+            if (sPressed) movementVector = Vector3.back;
+            if (aPressed) movementVector = Vector3.left;
+            if (dPressed) movementVector = Vector3.right;
 
         
-        movementVector.Normalize();
-        movementVector *= Time.deltaTime;
-        movementVector *= Speed;
+            movementVector.Normalize();
+            movementVector *= Time.deltaTime;
+            movementVector *= Speed;
 
-        _translation.Translate(movementVector);
+            _translation.Translate(movementVector);
+        }
     }
 }
