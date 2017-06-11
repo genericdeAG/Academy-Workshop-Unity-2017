@@ -24,6 +24,7 @@ namespace Assets.Scripts
         public void Hit()
         {
             Object.Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

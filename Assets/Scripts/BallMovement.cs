@@ -70,6 +70,7 @@ namespace Assets.Scripts
         {
             foreach (var contact in info.contacts)
             {
+                if(!info.gameObject.activeSelf) continue;
                 _velocity = Reflect(_velocity, contact.normal);
                 if (info.gameObject.CompareTag("Block"))
                 {
