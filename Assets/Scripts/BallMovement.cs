@@ -9,8 +9,6 @@ namespace Assets.Scripts
         private Vector3 _velocity;
         private Renderer _renderer;
         private Vector3 _startPosition;
-
-
         // Use this for initialization
         void Start()
         {
@@ -45,6 +43,7 @@ namespace Assets.Scripts
 
 
             transform.Translate(_velocity * Time.deltaTime * Speed);
+           
         }
 
         private bool IsOnBottomSide(Vector3 screenPointCenter, float screenPointRadius)
@@ -69,9 +68,14 @@ namespace Assets.Scripts
 
         void OnCollisionEnter(Collision info)
         {
-            foreach (var contactPoint in info.contacts)
+            foreach (var contact in info.contacts)
             {
-                _velocity = Reflect(_velocity, contactPoint.normal);
+                _velocity = Reflect(_velocity, contact.normal);
+                if (info.gameObject.CompareTag("Block"))
+                {
+                    var blockMovement = info.gameObject.GetComponent<BlockScript>();
+                    blockMovement.Hit();
+                }
             }
         }
 
