@@ -39,6 +39,9 @@ namespace Assets.Scripts
                 _velocity = Reflect(_velocity, normal);
             }else if (IsOnBottomSide(screenPointCenter, screenPointRadius))
             {
+                var gameController = GameObject.FindGameObjectWithTag("GameController");
+                var gameControllerScript = gameController.GetComponent<GameController>();
+                gameControllerScript.RemoveLife();
                 transform.position = _startPosition;
             }
 

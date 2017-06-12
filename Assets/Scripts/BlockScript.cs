@@ -25,6 +25,9 @@ namespace Assets.Scripts
 
         public void Hit()
         {
+            var gameController = GameObject.FindGameObjectWithTag("GameController");
+            var gameControllerScript = gameController.GetComponent<GameController>();
+            gameControllerScript.Points += 20;
             Instantiate(ExplosionEffect, transform.position,transform.rotation);
             Object.Destroy(gameObject);
             gameObject.SetActive(false);
