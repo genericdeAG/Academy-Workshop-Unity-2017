@@ -38,12 +38,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_GIWorkflowMode: 1
+  m_GIWorkflowMode: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -634,8 +634,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Scenes:
   - {fileID: 102900000, guid: 913c33dc7981406468324dddd15ff5e1, type: 3}
+  GameOverScene: {fileID: 102900000, guid: 4c3d007800b238b45b16c00d3d7fcce6, type: 3}
   PointText: {fileID: 2007324381}
-  LifesText: {fileID: 0}
+  LifesText: {fileID: 431963482}
 --- !u!4 &1223732667
 Transform:
   m_ObjectHideFlags: 0
@@ -786,7 +787,6 @@ GameObject:
   - component: {fileID: 2007324380}
   - component: {fileID: 2007324382}
   - component: {fileID: 2007324381}
-  - component: {fileID: 2007324383}
   m_Layer: 5
   m_Name: Points
   m_TagString: Untagged
@@ -851,14 +851,3 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2007324379}
---- !u!114 &2007324383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2007324379}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ce5b7346ef2d5740b17add72308b335, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

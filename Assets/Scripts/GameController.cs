@@ -8,6 +8,7 @@ namespace Assets.Scripts
     public class GameController : MonoBehaviour
     {
         public SceneAsset[] Scenes;
+        public SceneAsset GameOverScene;
         public int Points { get; set; }
         public int Lifes { get; set; }
         public Text PointText;
@@ -33,7 +34,8 @@ namespace Assets.Scripts
             Lifes -= 1;
             if (Lifes == 0)
             {
-                
+                SceneManager.UnloadSceneAsync(Scenes[0].name);
+                SceneManager.LoadScene(GameOverScene.name,LoadSceneMode.Additive);
             }
         }
     }
