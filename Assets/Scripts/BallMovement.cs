@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 
 namespace Assets.Scripts
 {
@@ -76,6 +77,17 @@ namespace Assets.Scripts
                 {
                     var blockMovement = info.gameObject.GetComponent<BlockScript>();
                     blockMovement.Hit();
+                }else if (info.gameObject.CompareTag("Pad"))
+                {
+                    var centerPointX = info.collider.bounds.center.x;
+                    var size = info.collider.bounds.size.x;
+                    var contactPointX = contact.point.x;
+                    var distanceToCenter = contactPointX - centerPointX;
+                    var distanceRelative = (distanceToCenter / (size / 2));
+                    var degree = distanceRelative * 45;
+                    var rotationQuaternion = Quaternion.Euler(0,0, -degree);
+
+                    _velocity = rotationQuaternion * _velocity;
                 }
             }
         }
