@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace Assets.Scripts
 {
     public class BlockScript : MonoBehaviour
     {
+        public AutoDestroyParticleEffect ExplosionEffect;
+        public AudioClip ExplosionAudio;
         private MeshRenderer _renderer;
         
         // Use this for initialization
@@ -23,6 +26,7 @@ namespace Assets.Scripts
 
         public void Hit()
         {
+            Instantiate(ExplosionEffect, transform.position,transform.rotation);
             Object.Destroy(gameObject);
             gameObject.SetActive(false);
         }
