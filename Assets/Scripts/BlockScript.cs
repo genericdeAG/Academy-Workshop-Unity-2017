@@ -6,7 +6,6 @@ namespace Assets.Scripts
     public class BlockScript : MonoBehaviour
     {
         public AutoDestroyParticleEffect ExplosionEffect;
-        public AudioClip ExplosionAudio;
         private MeshRenderer _renderer;
         
         // Use this for initialization

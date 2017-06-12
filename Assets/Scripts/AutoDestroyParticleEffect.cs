@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Assets.Scripts
 {
@@ -7,8 +8,10 @@ namespace Assets.Scripts
         void Start()
         {
             var particleEffect = GetComponent<ParticleSystem>();
+            var audioSource = GetComponent<AudioSource>();
+            audioSource.Play();
             particleEffect.Play();
-            Destroy(gameObject,particleEffect.main.duration);
+            Destroy(gameObject,Math.Max(particleEffect.main.duration,audioSource.clip.length));
         }
     }
 }
