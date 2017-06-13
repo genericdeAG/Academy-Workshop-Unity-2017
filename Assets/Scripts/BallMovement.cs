@@ -44,10 +44,7 @@ namespace Assets.Scripts
                 gameControllerScript.RemoveLife();
                 transform.position = _startPosition;
             }
-
-
             transform.Translate(_velocity * Time.deltaTime * Speed);
-           
         }
 
         private bool IsOnBottomSide(Vector3 screenPointCenter, float screenPointRadius)

@@ -634,6 +634,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Scenes:
   - {fileID: 102900000, guid: 913c33dc7981406468324dddd15ff5e1, type: 3}
+  - {fileID: 102900000, guid: c082fa701070fc14391d1597a5db41c3, type: 3}
   GameOverScene: {fileID: 102900000, guid: 4c3d007800b238b45b16c00d3d7fcce6, type: 3}
   PointText: {fileID: 2007324381}
   LifesText: {fileID: 431963482}

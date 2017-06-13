@@ -15,6 +15,9 @@ namespace Assets.Scripts
             var randomMaterial = new Material(_renderer.material);
             randomMaterial.color = Random.ColorHSV();
             _renderer.material = randomMaterial;
+            var gameController = GameObject.FindGameObjectWithTag("GameController");
+            var gameControllerScript = gameController.GetComponent<GameController>();
+            gameControllerScript.RegisterBlock();
         }
 
         // Update is called once per frame
@@ -28,6 +31,7 @@ namespace Assets.Scripts
             var gameController = GameObject.FindGameObjectWithTag("GameController");
             var gameControllerScript = gameController.GetComponent<GameController>();
             gameControllerScript.Points += 20;
+            gameControllerScript.UnregisterBlock();
             Instantiate(ExplosionEffect, transform.position,transform.rotation);
             Object.Destroy(gameObject);
             gameObject.SetActive(false);

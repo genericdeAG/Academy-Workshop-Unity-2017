@@ -10,32 +10,51 @@ namespace Assets.Scripts
         public SceneAsset[] Scenes;
         public SceneAsset GameOverScene;
         public int Points { get; set; }
-        public int Lifes { get; set; }
+        private int _lifes;
+        private int _blockCount;
+        private int _currentLevel;
         public Text PointText;
         public Text LifesText;
 
         // Use this for initialization
         void Start()
         {
-            SceneManager.LoadScene(Scenes[0].name, LoadSceneMode.Additive);
+            _currentLevel = 0;
+            SceneManager.LoadScene(Scenes[_currentLevel].name, LoadSceneMode.Additive);
             Points = 0;
-            Lifes = 5;
+            _lifes = 5;
         }
 
         // Update is called once per frame
         void Update()
         {
             PointText.text = "Punkte: " + Points;
-            LifesText.text = "Leben: " + Lifes;
+            LifesText.text = "Leben: " + _lifes;
         }
 
         public void RemoveLife()
         {
-            Lifes -= 1;
-            if (Lifes == 0)
+            _lifes -= 1;
+            if (_lifes == 0)
             {
-                SceneManager.UnloadSceneAsync(Scenes[0].name);
-                SceneManager.LoadScene(GameOverScene.name,LoadSceneMode.Additive);
+                SceneManager.LoadScene(GameOverScene.name);
+            }
+        }
+
+        public void RegisterBlock()
+        {
+            _blockCount++;
+        }
+
+        public void UnregisterBlock()
+        {
+            _blockCount--;
+            if (_blockCount == 0)
+            {
+                SceneManager.UnloadSceneAsync(Scenes[_currentLevel].name);
+                _currentLevel++;
+                _currentLevel = _currentLevel % Scenes.Length;
+                SceneManager.LoadScene(Scenes[_currentLevel].name, LoadSceneMode.Additive);
             }
         }
     }

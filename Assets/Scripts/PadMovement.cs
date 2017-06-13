@@ -51,7 +51,6 @@ namespace Assets.Scripts
             movementX += _currentSpeed * Time.deltaTime;
 
             _transformation.Translate(movementX, 0, 0, Space.World);
-            var screenPoint = Camera.WorldToViewportPoint(_transformation.position);
             var screenPointRightmost = Camera.WorldToViewportPoint(_childRenderer.bounds.max);
             var screenPointLeftmost = Camera.WorldToViewportPoint(_childRenderer.bounds.min);
             bool onScreen = screenPointRightmost.x < 1 && screenPointLeftmost.x > 0;
