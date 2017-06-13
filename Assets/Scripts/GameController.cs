@@ -8,12 +8,13 @@ namespace Assets.Scripts
 {
     public class GameController : MonoBehaviour
     {
-        public SceneAsset[] Scenes;
-        public SceneAsset GameOverScene;
-        public int Points { get; set; }
         private int _lifes;
         private int _blockCount;
         private int _currentLevel;
+        public int Points { get; set; }
+
+        public SceneAsset[] Scenes;
+        public SceneAsset GameOverScene;
         public Text PointText;
         public Text LifesText;
 

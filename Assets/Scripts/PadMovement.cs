@@ -8,16 +8,13 @@ namespace Assets.Scripts
     {
         private Transform _transformation;
         private float _currentSpeed;
+        private Renderer _childRenderer;
 
         public float InitialSpeed = 4;
-
         public float MaxSpeed = 6;
-
         public float Acceleration = 2;
-
         public Camera Camera;
 
-        private Renderer _childRenderer;
         // Use this for initialization
         void Start()
         {

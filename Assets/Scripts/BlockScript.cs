@@ -5,9 +5,10 @@ namespace Assets.Scripts
 {
     public class BlockScript : MonoBehaviour
     {
-        public AutoDestroyParticleEffect ExplosionEffect;
         private MeshRenderer _renderer;
-        
+
+        public AutoDestroyParticleEffect ExplosionEffect;
+
         // Use this for initialization
         void Start()
         {

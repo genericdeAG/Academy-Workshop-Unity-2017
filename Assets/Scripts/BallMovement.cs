@@ -5,11 +5,13 @@ namespace Assets.Scripts
 {
     public class BallMovement : MonoBehaviour
     {
-        public float Speed = 2f;
-        public Camera Camera;
         private Vector3 _velocity;
         private Renderer _renderer;
         private Vector3 _startPosition;
+
+        public float Speed = 2f;
+        public Camera Camera;
+
         // Use this for initialization
         void Start()
         {
