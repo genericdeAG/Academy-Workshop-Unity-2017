@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using System.Collections;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -54,8 +55,14 @@ namespace Assets.Scripts
                 SceneManager.UnloadSceneAsync(Scenes[_currentLevel].name);
                 _currentLevel++;
                 _currentLevel = _currentLevel % Scenes.Length;
-                SceneManager.LoadScene(Scenes[_currentLevel].name, LoadSceneMode.Additive);
+                StartCoroutine(LoadLevelInASecond());
             }
+        }
+
+        private IEnumerator LoadLevelInASecond()
+        {
+            yield return new WaitForSeconds(1.0f);
+            SceneManager.LoadScene(Scenes[_currentLevel].name, LoadSceneMode.Additive);
         }
     }
 }

@@ -43,6 +43,7 @@ namespace Assets.Scripts
                 var gameControllerScript = gameController.GetComponent<GameController>();
                 gameControllerScript.RemoveLife();
                 transform.position = _startPosition;
+                _velocity = Vector3.down;
             }
             transform.Translate(_velocity * Time.deltaTime * Speed);
         }
