@@ -29,7 +29,7 @@ namespace Assets.Scripts
             var rightPressed = Input.GetKey(KeyCode.RightArrow);
 
             var movementX = 0.0f;
-            if (!leftPressed && !rightPressed) _currentSpeed = 0;
+            if (NoMovement(leftPressed, rightPressed)) _currentSpeed = 0;
 
             if (leftPressed)
             {
@@ -47,6 +47,11 @@ namespace Assets.Scripts
 
             movementX += _currentSpeed * Time.deltaTime;
 
+            MoveExeptOffscreen(movementX);
+        }
+
+        private void MoveExeptOffscreen(float movementX)
+        {
             _transformation.Translate(movementX, 0, 0, Space.World);
             var screenPointRightmost = Camera.WorldToViewportPoint(_childRenderer.bounds.max);
             var screenPointLeftmost = Camera.WorldToViewportPoint(_childRenderer.bounds.min);
@@ -55,6 +60,11 @@ namespace Assets.Scripts
             {
                 _transformation.Translate(-movementX, 0, 0, Space.World);
             }
+        }
+
+        private static bool NoMovement(bool leftPressed, bool rightPressed)
+        {
+            return !leftPressed && !rightPressed;
         }
     }
 }

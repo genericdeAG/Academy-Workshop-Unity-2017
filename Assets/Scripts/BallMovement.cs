@@ -78,21 +78,31 @@ namespace Assets.Scripts
                 _velocity = Reflect(_velocity, contact.normal);
                 if (info.gameObject.CompareTag("Block"))
                 {
-                    var blockMovement = info.gameObject.GetComponent<BlockScript>();
-                    blockMovement.Hit();
+                    HitBlock(info);
                 }else if (info.gameObject.CompareTag("Pad"))
                 {
-                    var centerPointX = info.collider.bounds.center.x;
-                    var size = info.collider.bounds.size.x;
-                    var contactPointX = contact.point.x;
-                    var distanceToCenter = contactPointX - centerPointX;
-                    var distanceRelative = (distanceToCenter / (size / 2));
-                    var degree = distanceRelative * 45;
-                    var rotationQuaternion = Quaternion.Euler(0,0, -degree);
-
-                    _velocity = rotationQuaternion * _velocity;
+                    HitPad(info, contact);
                 }
             }
+        }
+
+        private void HitPad(Collision info, ContactPoint contact)
+        {
+            var centerPointX = info.collider.bounds.center.x;
+            var size = info.collider.bounds.size.x;
+            var contactPointX = contact.point.x;
+            var distanceToCenter = contactPointX - centerPointX;
+            var distanceRelative = (distanceToCenter / (size / 2));
+            var degree = distanceRelative * 45;
+            var rotationQuaternion = Quaternion.Euler(0, 0, -degree);
+
+            _velocity = rotationQuaternion * _velocity;
+        }
+
+        private static void HitBlock(Collision info)
+        {
+            var blockMovement = info.gameObject.GetComponent<BlockScript>();
+            blockMovement.Hit();
         }
 
         Vector3 Reflect(Vector3 velocity, Vector3 normal)

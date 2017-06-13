@@ -13,12 +13,22 @@ namespace Assets.Scripts
         void Start()
         {
             _renderer = GetComponent<MeshRenderer>();
-            var randomMaterial = new Material(_renderer.material);
-            randomMaterial.color = Random.ColorHSV();
-            _renderer.material = randomMaterial;
+            AssignRandomMaterial();
+            RegisterBlock();
+        }
+
+        private static void RegisterBlock()
+        {
             var gameController = GameObject.FindGameObjectWithTag("GameController");
             var gameControllerScript = gameController.GetComponent<GameController>();
             gameControllerScript.RegisterBlock();
+        }
+
+        private void AssignRandomMaterial()
+        {
+            var randomMaterial = new Material(_renderer.material);
+            randomMaterial.color = Random.ColorHSV();
+            _renderer.material = randomMaterial;
         }
 
         // Update is called once per frame
@@ -34,8 +44,8 @@ namespace Assets.Scripts
             gameControllerScript.Points += 20;
             gameControllerScript.UnregisterBlock();
             Instantiate(ExplosionEffect, transform.position,transform.rotation);
-            Object.Destroy(gameObject);
             gameObject.SetActive(false);
+            Object.Destroy(gameObject);
         }
     }
 }
